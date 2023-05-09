@@ -61,5 +61,31 @@ return require('packer').startup(function(use)
 	}
 
 	-- bar at the bottom
-	use 'feline-nvim/feline.nvim'
+	use {
+		'feline-nvim/feline.nvim',
+		requires = {
+			-- git signs dependancy for feline
+			use 'lewis6991/gitsigns.nvim',
+		}
+	}
+
+
+	-- nvim tree
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional
+		},
+		config = function()
+			require("nvim-tree").setup {}
+		end
+	}
+
+	-- tabline at the top
+	use {
+		'crispgm/nvim-tabline',
+		requires = {
+			'nvim-tree/nvim-web-devicons',
+		}
+	}
 end)

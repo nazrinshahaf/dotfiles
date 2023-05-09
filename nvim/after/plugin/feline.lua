@@ -1,3 +1,6 @@
+-- depandency for the gitstatus on the left side
+require('gitsigns').setup()
+
 local line_ok, feline = pcall(require, "feline")
 if not line_ok then
 	return
