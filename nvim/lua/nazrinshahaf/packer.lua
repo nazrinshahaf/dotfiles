@@ -88,4 +88,40 @@ return require('packer').startup(function(use)
 			'nvim-tree/nvim-web-devicons',
 		}
 	}
+
+	-- surround words with tags or quotes
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+	})
+
+	-- tag complete html tag
+	use 'windwp/nvim-ts-autotag'
+
+
+	-- finishing quotes and brackets
+	use {
+		"windwp/nvim-autopairs",
+	}
+
+	-- show line indentation
+	use "lukas-reineke/indent-blankline.nvim"
+
+	-- startup screen
+	use {
+		"startup-nvim/startup.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		config = function()
+			require "startup".setup()
+		end
+	}
+
+	-- code formatter mostly for prettie (disabled)
+	use { 'mhartington/formatter.nvim' }
+
+	-- html snippet (disabled)
+	use "rafamadriz/friendly-snippets"
+
+	-- smart commenter
+	use "terrortylor/nvim-comment"
 end)
