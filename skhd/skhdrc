@@ -5,10 +5,10 @@ hyper - k : yabai -m window --focus north
 hyper - l : yabai -m window --focus east
 
 # swap managed window
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+shift + ctrl - h : yabai -m window --swap west
+shift + ctrl - j : yabai -m window --swap south
+shift + ctrl - k : yabai -m window --swap north
+shift + ctrl - l : yabai -m window --swap east
 
 # move managed window
 shift + alt + ctrl - h : yabai -m window --warp west
@@ -23,9 +23,9 @@ hyper - r : yabai -m space --rotate 90
 hyper - f : yabai -m window --toggle zoom-fullscreen
 
 # alt - s : yabai -m window --toggle
-hyper - s : yabai -m window --toggle sticky;\
-          yabai -m window --toggle topmost;\
-          yabai -m window --toggle pip
+# hyper - s : yabai -m window --toggle sticky;\
+#           yabai -m window --toggle topmost;\
+#           yabai -m window --toggle pip
 
 # toggle padding and gap
 alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
@@ -48,19 +48,19 @@ shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
 shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
 shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
 shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
-shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
-shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+# shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+# shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
 
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + alt - n : yabai -m space --create && \
-                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                   yabai -m window --space "${index}" && \
-                   yabai -m space --focus "${index}"
+# shift + alt - n : yabai -m space --create && \
+#                    index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+#                    yabai -m window --space "${index}" && \
+#                    yabai -m space --focus "${index}"
 
 # fast focus desktop
-alt - tab : yabai -m space --focus recent
+# hyper - d: yabai -m space --focus recent
 
 # send window to monitor and follow focus
-shift + alt - n : yabai -m window --display next; yabai -m display --focus next
-shift + alt - p : yabai -m window --display previous; yabai -m display --focus previous
+# shift + alt - n : yabai -m window --display next; yabai -m display --focus next
+# shift + alt - p : yabai -m window --display previous; yabai -m display --focus previous
