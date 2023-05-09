@@ -1,4 +1,5 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- so and :PackerSync
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -11,7 +12,7 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
 		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
 	-- tokyonight colourscheme
@@ -20,7 +21,7 @@ return require('packer').startup(function(use)
 	-- treesitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		{run = ':TSUpdate'}
+		{ run = ':TSUpdate' }
 	}
 
 	-- harpoon
@@ -35,19 +36,30 @@ return require('packer').startup(function(use)
 		branch = 'v2.x',
 		requires = {
 			-- LSP Support
-			{'neovim/nvim-lspconfig'},             -- Required
-			{                                      -- Optional
-			'williamboman/mason.nvim',
-			run = function()
-				pcall(vim.cmd, 'MasonUpdate')
-			end,
-		},
-		{'williamboman/mason-lspconfig.nvim'}, -- Optional
+			{ 'neovim/nvim-lspconfig' }, -- Required
+			{
+				-- Optional
+				'williamboman/mason.nvim',
+				run = function()
+					pcall(vim.cmd, 'MasonUpdate')
+				end,
+			},
+			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-		-- Autocompletion
-		{'hrsh7th/nvim-cmp'},     -- Required
-		{'hrsh7th/cmp-nvim-lsp'}, -- Required
-		{'L3MON4D3/LuaSnip'},     -- Required
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' }, -- Required
+			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
+			{ 'L3MON4D3/LuaSnip' }, -- Required
+		},
 	}
-}
+	-- multiplexer navigator
+	use {
+		'numToStr/Navigator.nvim',
+		config = function()
+			require('Navigator').setup()
+		end
+	}
+
+	-- bar at the bottom
+	use 'feline-nvim/feline.nvim'
 end)
