@@ -11,6 +11,28 @@ lsp.ensure_installed({
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
+-- Fixes vim not a global varaible in lua
+lsp.configure('lua_ls', {
+	cmd = { 'lua-language-server' },
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+				path = vim.split(package.path, ';'),
+			},
+			diagnostics = {
+				globals = { 'vim' },
+			},
+			workspace = {
+				library = {
+					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+					[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+				},
+			},
+		},
+	},
+})
+
 cmp.setup({
 	sources = {
 		{ name = 'path' },
