@@ -50,6 +50,7 @@ return require('packer').startup(function(use)
 			{ 'hrsh7th/nvim-cmp' }, -- Required
 			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
 			-- { 'saadparwaiz1/cmp_luasnip' },
+			{ 'onsails/lspkind.nvim' }, -- Window Length
 			{ 'L3MON4D3/LuaSnip' }, -- Required
 		},
 	}

@@ -2,6 +2,7 @@ local lsp = require('lsp-zero').preset({})
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local luasnip = require('luasnip')
+local lspkind = require('lspkind')
 
 lsp.preset("recommended")
 lsp.ensure_installed({
@@ -70,16 +71,40 @@ lsp.setup()
 
 -- for LuaSnip --
 local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	unpack = unpack or table.unpack
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 -- for LuaSnip --
+
+
+-- for window width(consider install lspkind) --
+-- local ELLIPSIS_CHAR = '…'
+-- local MAX_LABEL_WIDTH = 10
+-- -- local MAX_KIND_WIDTH = 14
+-- local get_ws = function (max, len)
+--   return (" "):rep(max - len)
+-- end
+--
+-- local plsformat = function(_, item)
+--   local content = item.abbr
+--   -- local kind_symbol = symbols[item.kind]
+--   -- item.kind = kind_symbol .. get_ws(MAX_KIND_WIDTH, #kind_symbol)
+--
+--   if #content > MAX_LABEL_WIDTH then
+--     item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+--   else
+--     item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+--   end
+--
+--   return item
+-- end
+-- for window width(consider install lspkind) --
 
 cmp.setup({
 	sources = {
 		{ name = 'path' },
-		{ name = 'nvim_lsp' },
+		{ name = 'nvim_lsp', max_item_count = 12 },
 		{ name = 'buffer',  keyword_length = 3 },
 		{ name = 'luasnip', keyword_length = 2 },
 	},
@@ -117,5 +142,22 @@ cmp.setup({
 		-- Navigate between snippet placeholder
 		['<C-n>'] = cmp_action.luasnip_jump_forward(),
 		['<C-p>'] = cmp_action.luasnip_jump_backward(),
-	}
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = 'symbol', -- show only symbol annotations
+			maxwidth = 40, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+		})
+  }
+	-- formatting = {
+	-- 	format = function(entry, vim_item)
+	-- 		vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+	-- 		return vim_item
+	-- 	end
+	-- }
 })
