@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
 	-- tokyonight colourscheme
 	use 'folke/tokyonight.nvim'
 
-	-- treesitter
+	-- treesitter (syntax highlighting)
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		{ run = ':TSUpdate' }
@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
 			-- Autocompletion
 			{ 'hrsh7th/nvim-cmp' }, -- Required
 			{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
+			-- { 'saadparwaiz1/cmp_luasnip' },
 			{ 'L3MON4D3/LuaSnip' }, -- Required
 		},
 	}
