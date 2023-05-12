@@ -100,6 +100,11 @@ _G.packer_plugins = {
     path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/formatter.nvim",
     url = "https://github.com/mhartington/formatter.nvim"
   },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -120,6 +125,11 @@ _G.packer_plugins = {
     path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["lspkind.nvim"] = {
+    loaded = true,
+    path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -139,6 +149,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/Users/nazrinshahaf/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
