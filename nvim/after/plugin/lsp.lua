@@ -81,7 +81,8 @@ end
 -- for window width(consider install lspkind) --
 -- local ELLIPSIS_CHAR = '…'
 -- local MAX_LABEL_WIDTH = 10
--- -- local MAX_KIND_WIDTH = 14
+-- local MIN_LABEL_WIDTH = 10
+-- local MAX_KIND_WIDTH = 14
 -- local get_ws = function (max, len)
 --   return (" "):rep(max - len)
 -- end
@@ -105,8 +106,8 @@ cmp.setup({
 	sources = {
 		{ name = 'path' },
 		{ name = 'nvim_lsp', max_item_count = 12 },
-		{ name = 'buffer',  keyword_length = 3 },
-		{ name = 'luasnip', keyword_length = 2 },
+		{ name = 'buffer',   keyword_length = 3 },
+		{ name = 'luasnip',  keyword_length = 2 },
 	},
 	mapping = {
 		-- `Enter` key to confirm completion
@@ -148,16 +149,13 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	formatting = {
-		format = lspkind.cmp_format({
-			mode = 'symbol', -- show only symbol annotations
-			maxwidth = 40, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-		})
-  }
-	-- formatting = {
-	-- 	format = function(entry, vim_item)
-	-- 		vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
-	-- 		return vim_item
-	-- 	end
-	-- }
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 30 })(entry, vim_item)
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
+			kind.kind = " " .. (strings[1] or "") .. " "
+			kind.menu = "    (" .. (strings[2] or "") .. ")"
+			return kind
+		end,
+	},
 })
