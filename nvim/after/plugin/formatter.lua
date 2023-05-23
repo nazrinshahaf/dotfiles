@@ -1,41 +1,49 @@
--- require("formatter").setup {
---   filetype = {
---     -- Formatter configurations for filetype "lua" go here
---     -- and will be executed in order
---     lua = {
---       -- "formatter.filetypes.lua" defines default configurations for the
---       -- "lua" filetype
---       require("formatter.filetypes.lua").stylua,
---
---       -- You can also define your own configuration
---       function()
---         -- Supports conditional formatting
---         if util.get_current_buffer_file_name() == "special.lua" then
---           return nil
---         end
---
---         -- Full specification of configurations is down below and in Vim help
---         -- files
---         return {
---           exe = "stylua",
---           args = {
---             "--search-parent-directories",
---             "--stdin-filepath",
---             util.escape_path(util.get_current_buffer_file_path()),
---             "--",
---             "-",
---           },
---           stdin = true,
---         }
---       end
---     },
---
---     -- Use the special "*" filetype for defining formatter configurations on
---     -- any filetype
---     ["*"] = {
---       -- "formatter.filetypes.any" defines default configurations for any
---       -- filetype
---       require("formatter.filetypes.any").remove_trailing_whitespace
---     }
---   }
--- }
+local formatter = require("formatter")
+
+local function prettier()
+	return {
+		exe = 'prettier',
+		args = {
+			-- '--config-precedence',
+			-- 'prefer-file',
+			-- '--single-quote',
+			-- '--no-bracket-spacing',
+			-- '--prose-wrap',
+			-- 'always',
+			-- '--arrow-parens',
+			-- 'always',
+			-- '--trailing-comma',
+			-- 'all',
+			-- '--no-semi',
+			-- '--end-of-line',
+			-- 'lf',
+			-- '--print-width',
+			-- vim.bo.textwidth,
+			'--stdin-filepath',
+			vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
+		},
+		stdin = true,
+	}
+end
+
+formatter.setup {
+	logging = false,
+	filetype = {
+		javascript = { prettier },
+		typescript = { prettier },
+		javascriptreact = { prettier },
+		typescriptreact = { prettier },
+		['javascript.jsx'] = { prettier },
+		['typescript.tsx'] = { prettier },
+		markdown = { prettier },
+		css = { prettier },
+		json = { prettier },
+		jsonc = { prettier },
+		scss = { prettier },
+		html = { prettier },
+	},
+}
+
+-- vim.api.nvim_create_augroup('__formatter__', function()
+-- 	vim.api.nvim_create_autocmd('BufWritePre', '*', 'FormatWrite')
+-- end)

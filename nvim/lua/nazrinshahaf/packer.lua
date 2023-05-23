@@ -118,7 +118,7 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	-- code formatter mostly for prettie (disabled)
+	-- code formatter mostly for prettier (disabled)
 	use { 'mhartington/formatter.nvim' }
 
 	-- html snippet (disabled)
