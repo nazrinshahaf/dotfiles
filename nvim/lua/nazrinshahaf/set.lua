@@ -28,4 +28,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+
 --vim.opt.colorcolumn = "80"
