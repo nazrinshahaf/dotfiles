@@ -11,6 +11,9 @@ lsp.ensure_installed({
 	"rust_analyzer",
 })
 
+-- skip jdtls and let nvim-jdtls run instead
+lsp.skip_server_setup({ 'jdtls' })
+
 -- Fixes vim not a global varaible in lua
 lsp.configure('lua_ls', {
 	cmd = { 'lua-language-server' },
@@ -76,7 +79,6 @@ lsp.format_on_save({
 -- format on save --
 
 lsp.setup()
-
 
 -- for LuaSnip --
 local has_words_before = function()

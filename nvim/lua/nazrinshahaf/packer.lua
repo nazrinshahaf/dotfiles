@@ -144,6 +144,8 @@ return require('packer').startup(function(use)
 	}
 
 	-- Java
+	use 'mfussenegger/nvim-jdtls'
+
 	-- Colour when #ffffff in terminal
 	use { 'norcalli/nvim-colorizer.lua' }
 end)
