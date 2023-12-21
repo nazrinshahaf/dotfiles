@@ -1,5 +1,6 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
--- so and :PackerSync
+-- :so and :PackerSync
+-- NOTE: if treesitter breaks just :TSUpdate
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -125,5 +126,12 @@ return require('packer').startup(function(use)
 	use "rafamadriz/friendly-snippets"
 
 	-- smart commenter
-	use "terrortylor/nvim-comment"
+	-- use "terrortylor/nvim-comment"
+	use {
+		'numToStr/Comment.nvim',
+		requires = {
+			'JoosepAlviste/nvim-ts-context-commentstring',
+		}
+	}
+
 end)
