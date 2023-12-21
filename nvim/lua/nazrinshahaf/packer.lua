@@ -134,4 +134,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
+
+	-- Colour when #ffffff in terminal
+	use { 'norcalli/nvim-colorizer.lua' }
 end)
