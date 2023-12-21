@@ -37,6 +37,15 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Change all instances of word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Change all instances of highlited text under cursor
+vim.keymap.set("v", "<leader>s", [["hy:%s/<C-r>h/<C-r>h/gc<Left><Left><Left>]])
+
+-- Change selected instances of highlited text under cursor
+vim.keymap.set("v", "<leader>S", [["hy:%s/<C-r>h/<C-r>h/g<Left><Left><Left>]])
+
+-- Visually highlight all instances of selected word
+vim.keymap.set("v", "<leader>v", [["hy/<C-r>h]])
+
 -- quickfix nav
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -52,3 +61,17 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- moving between buffer
 vim.keymap.set("n", "<leader>k", "gT")
 vim.keymap.set("n", "<leader>j", "gt")
+
+-- rebind for making window size bigger/smaller (horizontal split)
+vim.keymap.set("n", "+", ":resize +1<CR>", { noremap = true })
+vim.keymap.set("n", "-", ":resize -1<CR>", { noremap = true })
+
+-- rebind for making window size bigger/smaller (vertical split)
+vim.keymap.set("n", ">", ":vertical resize +1<CR>", { noremap = true })
+vim.keymap.set("n", "<", ":vertical resize -1<CR>", { noremap = true })
+
+-- rebind to escape in terminal mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
+
+-- rebind code action
+vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { noremap = true, silent = true })
