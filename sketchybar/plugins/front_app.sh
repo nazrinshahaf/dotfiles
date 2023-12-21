@@ -21,12 +21,18 @@ case $INFO in
 "iTerm2")
     ICON=
     ;;
+"IntelliJ IDEA CE")
+    ICON=󰅩
+    ;;
+"Android Studio")
+    ICON=
+    ;;
 "FaceTime")
     ICON_PADDING_RIGHT=5
     ICON=
     ;;
 "Finder")
-    ICON=
+    ICON=󰀶
     ;;
 "Google Chrome")
     ICON_PADDING_RIGHT=7
@@ -42,13 +48,16 @@ case $INFO in
 "Messages")
     ICON=󰍦
     ;;
-"Notion")
+"Postgres")
     ICON_PADDING_RIGHT=6
     ICON=󰈄
     ;;
 "Preview")
     ICON_PADDING_RIGHT=3
     ICON=
+    ;;
+"Postman")
+    ICON=󰴒
     ;;
 "Spotify")
     ICON=
@@ -69,7 +78,7 @@ case $INFO in
     ICON=󰶘
     ;;
 *)
-    ICON=﯂
+    ICON=󰌢
     ;;
 esac
 
