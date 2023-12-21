@@ -81,7 +81,7 @@ local c = {
 			fg = "green",
 			bg = "darkblue",
 		},
-		left_sep = "block",
+		-- left_sep = "block",
 		right_sep = "block",
 	},
 	gitDiffRemoved = {
@@ -90,7 +90,7 @@ local c = {
 			fg = "red",
 			bg = "darkblue",
 		},
-		left_sep = "block",
+		-- left_sep = "block",
 		right_sep = "block",
 	},
 	gitDiffChanged = {
@@ -99,7 +99,7 @@ local c = {
 			fg = "fg",
 			bg = "darkblue",
 		},
-		left_sep = "block",
+		-- left_sep = "block",
 		right_sep = "right_filled",
 	},
 	separator = {
@@ -223,7 +223,7 @@ local middle = {
 
 local right = {
 	c.lsp_client_names,
-	c.file_type,
+	-- c.file_type,
 	c.file_encoding,
 	c.position,
 	c.line_percentage,
