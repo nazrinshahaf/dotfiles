@@ -6,7 +6,7 @@ local lspkind = require('lspkind')
 
 lsp.preset("recommended")
 lsp.ensure_installed({
-	"tsserver",
+	-- "tsserver",
 	"eslint",
 	"rust_analyzer",
 })
@@ -70,6 +70,7 @@ lsp.format_on_save({
 	servers = {
 		['lua_ls'] = { 'lua' },
 		['rust_analyzer'] = { 'rust' },
+		['dartls'] = { 'dart' },
 	}
 })
 -- format on save --

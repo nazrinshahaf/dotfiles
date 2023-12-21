@@ -134,7 +134,16 @@ return require('packer').startup(function(use)
 		}
 	}
 
+	-- Flutter
+	use {
+		'akinsho/flutter-tools.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim',
+			'stevearc/dressing.nvim', -- optional for vim.ui.select
+		},
+	}
 
+	-- Java
 	-- Colour when #ffffff in terminal
 	use { 'norcalli/nvim-colorizer.lua' }
 end)
