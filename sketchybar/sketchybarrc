@@ -72,11 +72,13 @@ sketchybar --add item front_app left \
     label.drawing=yes
 
 sketchybar --add event spotify_change $SPOTIFY_EVENT \
-    --add item spotify left \
+    --add item spotify center \
     --set spotify \
-    background.padding_left=3 \
+    background.padding_left=0 \
+    background.padding_right=0 \
     icon= \
     icon.y_offset=1 \
+    icon.padding_left=6 \
     icon.font="$ICON_FONT:Bold:22.0" \
     label.drawing=off \
     script="$PLUGIN_DIR/spotify.sh" \
